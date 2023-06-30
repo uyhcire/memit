@@ -166,9 +166,12 @@ def get_reprs_at_idxs(
     print("TODO XXX to_return type - ", type(to_return))
     print("TODO XXX to_return len - ", len(to_return))
     print("TODO XXX to_return - ", to_return)
+    retval = None
     if len(to_return) == 1:
         # TODO XXX - hmm - this could be causing "RuntimeError: The size of tensor a (2) must match the size of tensor b (4096) at non-singleton dimension 1"
         # - at memit/memit_main.py, line 69.
-        return to_return["in"] if "in" in to_return else to_return["out"]
+        retval = to_return["in"] if "in" in to_return else to_return["out"]
     else:
-        return to_return["in"], to_return["out"]
+        retval = to_return["in"], to_return["out"]
+    print("TODO XXX retval shape - ", retval.shape)
+    return retval
