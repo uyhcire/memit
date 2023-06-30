@@ -167,6 +167,6 @@ def get_reprs_at_idxs(
     print("TODO XXX to_return len - ", len(to_return))
     print("TODO XXX to_return - ", to_return)
     if len(to_return) == 1:
-        return to_return["in"] if tin else to_return["out"]
+        return to_return["in"] if "in" in to_return else to_return["out"]
     else:
         return to_return["in"], to_return["out"]
