@@ -133,6 +133,9 @@ def get_reprs_at_idxs(
         print("TODO XXX _process cur_repr", cur_repr)
         print("TODO XXX _process batch_idxs", batch_idxs)
         print("TODO XXX _process key", key)
+        # Skip layers like "transformer.h.8"
+        if type(cur_repr) is tuple and len(cur_repr) == 0:
+            return
         cur_repr = cur_repr[0] if type(cur_repr) is tuple else cur_repr
         for i, idx_list in enumerate(batch_idxs):
             to_return[key].append(cur_repr[i][idx_list].mean(0))
