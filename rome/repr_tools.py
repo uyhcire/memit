@@ -163,6 +163,9 @@ def get_reprs_at_idxs(
 
     to_return = {k: torch.stack(v, 0) for k, v in to_return.items() if len(v) > 0}
 
+    print("TODO XXX to_return type - ", type(to_return))
+    print("TODO XXX to_return len - ", len(to_return))
+    print("TODO XXX to_return - ", to_return)
     if len(to_return) == 1:
         return to_return["in"] if tin else to_return["out"]
     else:
