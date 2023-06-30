@@ -173,5 +173,9 @@ def get_reprs_at_idxs(
         retval = to_return["in"] if "in" in to_return else to_return["out"]
     else:
         retval = to_return["in"], to_return["out"]
-    print("TODO XXX retval shape - ", retval.shape)
+    if type(retval) is not tuple:
+        print("TODO XXX retval shape - ", retval.shape)
+    else:
+        print("TODO XXX retval[0] shape - ", retval[0].shape)
+        print("TODO XXX retval[1] shape - ", retval[1].shape)
     return retval
