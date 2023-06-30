@@ -180,6 +180,7 @@ def compute_z(
         f"Init norm {target_init.norm()} | Delta norm {delta.norm()} | Target norm {target.norm()}"
     )
 
+    print("TODO XXX compute_z returning shape - ", target.shape)
     return target
 
 
