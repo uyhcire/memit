@@ -152,10 +152,10 @@ def get_reprs_at_idxs(
                 model(**contexts_tok)
 
         if tin:
-            print("TODO XXX tr in _process - layer: ", module_name)
+            print("TODO XXX tr in _process - layer module_name: ", module_name)
             _process(tr.input, batch_idxs, "in")
         if tout:
-            print("TODO XXX tr out _process - layer: ", module_name)
+            print("TODO XXX tr out _process - layer module_name: ", module_name)
             _process(tr.output, batch_idxs, "out")
 
     to_return = {k: torch.stack(v, 0) for k, v in to_return.items() if len(v) > 0}
