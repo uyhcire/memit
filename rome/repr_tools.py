@@ -128,6 +128,8 @@ def get_reprs_at_idxs(
 
     def _process(cur_repr, batch_idxs, key):
         nonlocal to_return
+        print()
+        print("TODO XXX _process called")
         print("TODO XXX _process cur_repr", cur_repr)
         print("TODO XXX _process batch_idxs", batch_idxs)
         print("TODO XXX _process key", key)
@@ -150,8 +152,10 @@ def get_reprs_at_idxs(
                 model(**contexts_tok)
 
         if tin:
+            print("TODO XXX tr in _process - layer: ", module_name)
             _process(tr.input, batch_idxs, "in")
         if tout:
+            print("TODO XXX tr out _process - layer: ", module_name)
             _process(tr.output, batch_idxs, "out")
 
     to_return = {k: torch.stack(v, 0) for k, v in to_return.items() if len(v) > 0}
