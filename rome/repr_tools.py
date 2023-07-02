@@ -163,19 +163,8 @@ def get_reprs_at_idxs(
 
     to_return = {k: torch.stack(v, 0) for k, v in to_return.items() if len(v) > 0}
 
-    print("TODO XXX to_return type - ", type(to_return))
-    print("TODO XXX to_return len - ", len(to_return))
-    print("TODO XXX to_return - ", to_return)
-    retval = None
     if len(to_return) == 1:
-        # TODO XXX - hmm - this could be causing "RuntimeError: The size of tensor a (2) must match the size of tensor b (4096) at non-singleton dimension 1"
-        # - at memit/memit_main.py, line 69.
-        retval = to_return["in"] if "in" in to_return else to_return["out"]
+        # TODO XXX - i hope this works - the idea is to always return a tuple
+        return to_return.get("in"), to_return.get("out")
     else:
-        retval = to_return["in"], to_return["out"]
-    if type(retval) is not tuple:
-        print("TODO XXX retval shape - ", retval.shape)
-    else:
-        print("TODO XXX retval[0] shape - ", retval[0].shape)
-        print("TODO XXX retval[1] shape - ", retval[1].shape)
-    return retval
+        return to_return["in"], to_return["out"]
