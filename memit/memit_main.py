@@ -157,6 +157,9 @@ def execute_memit(
         print(f"Writing {layer_ks.size(1)} key/value pair(s) into layer {layer}")
 
         # Compute residual error
+        print("TODO XXX hparams - ", hparams)
+        print("TODO XXX get_module_input_output_at_words args - z_layer - ", z_layer)
+        print("TODO XXX get_module_input_output_at_words args - module_template - ", module_template)
         cur_zs = get_module_input_output_at_words(
             model,
             tok,

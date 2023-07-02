@@ -141,6 +141,8 @@ def get_reprs_at_idxs(
             to_return[key].append(cur_repr[i][idx_list].mean(0))
 
     for batch_contexts, batch_idxs in _batch(n=128):
+        print(module_name)
+
         contexts_tok = tok(batch_contexts, padding=True, return_tensors="pt").to(
             next(model.parameters()).device
         )
@@ -165,6 +167,7 @@ def get_reprs_at_idxs(
 
     if len(to_return) == 1:
         # TODO XXX - i hope this works - the idea is to always return a tuple
+        # TODO XXX - no, I can't just fake a None tensor, lol. I should dig more into the transformer.h.8 layer and what's going on there.
         return to_return.get("in"), to_return.get("out")
     else:
         return to_return["in"], to_return["out"]
