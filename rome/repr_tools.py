@@ -128,14 +128,10 @@ def get_reprs_at_idxs(
 
     def _process(cur_repr, batch_idxs, key):
         nonlocal to_return
-        print()
-        print("TODO XXX _process called")
-        print("TODO XXX _process cur_repr", cur_repr)
-        print("TODO XXX _process batch_idxs", batch_idxs)
-        print("TODO XXX _process key", key)
-        # Skip layers like "transformer.h.8"
-        if type(cur_repr) is tuple and len(cur_repr) == 0:
-            return
+        # TODO XXX
+        # # Skip layers like "transformer.h.8"
+        # if type(cur_repr) is tuple and len(cur_repr) == 0:
+        #     return
         cur_repr = cur_repr[0] if type(cur_repr) is tuple else cur_repr
         for i, idx_list in enumerate(batch_idxs):
             to_return[key].append(cur_repr[i][idx_list].mean(0))
@@ -157,9 +153,13 @@ def get_reprs_at_idxs(
                 model(**contexts_tok)
 
         if tin:
+            print()
+            print("TODO XXX tr in _process - tr.input.shape: ", tr.input.shape)
             print("TODO XXX tr in _process - layer module_name: ", module_name)
             _process(tr.input, batch_idxs, "in")
         if tout:
+            print()
+            print("TODO XXX tr in _process - tr.output.shape: ", tr.output.shape)
             print("TODO XXX tr out _process - layer module_name: ", module_name)
             _process(tr.output, batch_idxs, "out")
 
