@@ -227,9 +227,6 @@ def get_module_input_output_at_words(
     else:
         raise ValueError(f"fact_token={fact_token_strategy} not recognized")
 
-    print("TODO XXX get_module_input_output_at_words l_input.shape -", l_input.shape)
-    print("TODO XXX get_module_input_output_at_words l_output.shape -", l_output.shape)
-
     return l_input.detach(), l_output.detach()
 
 
