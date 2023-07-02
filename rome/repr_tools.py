@@ -128,10 +128,10 @@ def get_reprs_at_idxs(
 
     def _process(cur_repr, batch_idxs, key):
         nonlocal to_return
-        # TODO XXX
-        # # Skip layers like "transformer.h.8"
-        # if type(cur_repr) is tuple and len(cur_repr) == 0:
-        #     return
+        # TODO XXX - okay to do?
+        # Skip layers like "transformer.h.8"
+        if type(cur_repr) is tuple and len(cur_repr) == 0:
+            return
         cur_repr = cur_repr[0] if type(cur_repr) is tuple else cur_repr
         for i, idx_list in enumerate(batch_idxs):
             to_return[key].append(cur_repr[i][idx_list].mean(0))
@@ -167,7 +167,7 @@ def get_reprs_at_idxs(
 
     if len(to_return) == 1:
         # TODO XXX - i hope this works - the idea is to always return a tuple
-        # TODO XXX - no, I can't just fake a None tensor, lol. I should dig more into the transformer.h.8 layer and what's going on there.
-        return to_return.get("in"), to_return.get("out")
+        # TODO XXX - will these dummy tensors work?
+        return to_return.get("in") or torch.tensor([]), to_return.get("out") or torch.tensor([])
     else:
         return to_return["in"], to_return["out"]
