@@ -154,12 +154,12 @@ def get_reprs_at_idxs(
 
         if tin:
             print()
-            print("TODO XXX tr in _process - tr.input.shape: ", tr.input.shape)
+            print("TODO XXX tr in _process - tr.input shapes: ", [tensor.shape for tensor in tr.input])
             print("TODO XXX tr in _process - layer module_name: ", module_name)
             _process(tr.input, batch_idxs, "in")
         if tout:
             print()
-            print("TODO XXX tr in _process - tr.output.shape: ", tr.output.shape)
+            print("TODO XXX tr in _process - tr.output shapes: ", [tensor.shape for tensor in tr.output])
             print("TODO XXX tr out _process - layer module_name: ", module_name)
             _process(tr.output, batch_idxs, "out")
 
