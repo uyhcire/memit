@@ -169,6 +169,9 @@ def get_reprs_at_idxs(
     if len(to_return) == 1:
         # TODO XXX - i hope this works - the idea is to always return a tuple
         # TODO XXX - will these dummy tensors work?
-        return to_return.get("in") or torch.tensor([]), to_return.get("out") or torch.tensor([])
+        return (
+            to_return["in"] if "in" in to_return else torch.tensor([]),
+            to_return["out"] if "out" in to_return else torch.tensor([]),
+        )
     else:
         return to_return["in"], to_return["out"]
