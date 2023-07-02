@@ -166,8 +166,6 @@ def execute_memit(
             module_template=hparams.layer_module_tmp,
             fact_token_strategy=hparams.fact_token,
         )[1].T
-        print("TODO XXX execute_memit zs.shape - ", zs.shape)
-        print("TODO XXX execute_memit cur_zs.shape - ", cur_zs.shape)
         targets = zs - cur_zs
         print("z error", torch.linalg.norm(targets, dim=0).mean())
 
